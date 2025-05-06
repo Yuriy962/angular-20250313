@@ -7,3 +7,21 @@
 h1 {
     color: blueviolet;
 } */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.py-3 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.px-3 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.p-3 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}

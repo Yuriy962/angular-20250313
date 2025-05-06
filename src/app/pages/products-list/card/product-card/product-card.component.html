@@ -1,0 +1,32 @@
+<mat-card appearance="outlined" class="product-card">
+    <mat-card-header>
+        <!-- Подкатегория товара -->
+        <mat-card-subtitle>{{ product?.subCategory }}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- Изображение -->
+    <img mat-card-image [src]="productImage?.url" [alt]="product?.name" />
+    <mat-card-footer class="card-footer">
+        <mat-card-content>
+            <!-- Наименование товара -->
+            <mat-card-title>{{ product?.name }}</mat-card-title>
+            <p>Отзывы: {{ product?.feedbacksCount }}</p>
+            <div class="rating">
+                <mat-icon [class.star-active]="isActiveStar(1)">star</mat-icon>
+                <mat-icon [class.star-active]="isActiveStar(2)">star</mat-icon>
+                <mat-icon [class.star-active]="isActiveStar(0)">star</mat-icon>
+                <mat-icon [class.star-active]="isActiveStar(0)">star</mat-icon>
+                <mat-icon [class.star-active]="isActiveStar(0)">star</mat-icon>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>
+                <mat-icon title="Добавить в избранное">thumb_up</mat-icon>
+                <span>В избранное</span>
+            </button>
+            <button mat-button>
+                <mat-icon title="Добавить в корзину">shopping_cart</mat-icon>
+                <span>В корзину</span>
+            </button>
+        </mat-card-actions>
+    </mat-card-footer>
+</mat-card>
