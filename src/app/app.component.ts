@@ -22,20 +22,14 @@ import {PopupHostComponent} from './core-components/popup-host/popup-host.compon
 })
 export class AppComponent {
     readonly appConfig = applicationConfigMock;
-
-    switchTemplate = signal(false);
-    closeTemplate = signal(true);
+    readonly isDrawerOpenedStore = signal(false);
+    readonly switchTemplate = signal(true);
+    readonly closeTemplate = signal(true);
 
     constructor() {
         setTimeout(() => {
             this.toggleTemplate();
         }, 3000);
-        setTimeout(() => {
-            this.toggleTemplate();
-        }, 6000);
-        setTimeout(() => {
-            this.toggleTemplate();
-        }, 9000);
     }
 
     private toggleTemplate() {

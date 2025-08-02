@@ -21,16 +21,19 @@ export class PopupHostComponent {
         read: ViewContainerRef,
     });
 
+    // Шаблон, вставляемый в popup
     readonly template = input<TemplateRef<unknown> | null>(null);
 
     constructor() {
-        this.listenUpdatePopupContent();
+        this.updatePopupContent();
     }
 
-    private listenUpdatePopupContent() {
+    // Обновление контента popup-а на основе пришедшего шаблона
+    private updatePopupContent() {
         effect(() => {
             const template = this.template();
 
+            // Если есть контент во вьюпорте - чистим его, чтобы была возможность вставить новый
             this.viewportViewContainer().clear();
 
             if (template) {

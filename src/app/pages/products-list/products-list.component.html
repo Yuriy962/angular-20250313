@@ -1,6 +1,6 @@
 @if (products(); as products) {
     @for (product of products; track product._id) {
-        <app-card [product]="product"></app-card>
+        <app-product-card [product]="product"></app-product-card>
     } @empty {
         Products is empty
     }
