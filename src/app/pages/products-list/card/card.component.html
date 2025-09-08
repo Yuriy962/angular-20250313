@@ -1,40 +1,47 @@
-<mat-card appearance="outlined" class="product-card">
+<mat-card class="card">
     <mat-card-header>
-        <!-- Подкатегория товара -->
-        <mat-card-subtitle>{{ product().subCategory }}</mat-card-subtitle>
+        <mat-card-title>{{ product().name }}</mat-card-title>
+        <mat-card-subtitle>{{ product().price }} $</mat-card-subtitle>
     </mat-card-header>
-    <!-- Изображение -->
-    <img mat-card-image [src]="productImage?.url" [alt]="product().name" />
-    <mat-card-footer class="card-footer">
-        <mat-card-content>
-            <!-- Наименование товара -->
-            <mat-card-title>{{ product().name }}</mat-card-title>
-            <p>Отзывы: {{ product().feedbacksCount }}</p>
-            <div class="rating">
-                <mat-icon [class.star-active]="isActiveStar(1)">star</mat-icon>
-                <mat-icon [class.star-active]="isActiveStar(2)">star</mat-icon>
-                <mat-icon [class.star-active]="isActiveStar(3)">star</mat-icon>
-                <mat-icon [class.star-active]="isActiveStar(4)">star</mat-icon>
-                <mat-icon [class.star-active]="isActiveStar(5)">star</mat-icon>
-            </div>
-        </mat-card-content>
-        <mat-card-actions class="product-card__footer">
-            <button
-                mat-button
-                [title]="isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'"
-                (click)="toFavorite($event)"
-            >
-                <mat-icon [class.color-success]="isFavorite">thumb_up</mat-icon>
+    <div class="galerey">
+        <ng-template appCarousel let-image let-next="next" let-back="back">
+            <button mat-icon-button disabled (click)="next()">
+                <mat-icon>chevron_left</mat-icon>
             </button>
-            <button mat-button class="ml-auto" (click)="addItem($event)">
-                <mat-icon title="Добавить в корзину">add</mat-icon>
+            <!-- Изображение -->
+            <img mat-card-image [src]="productImage?.url" [alt]="product().name" />
+            <button mat-icon-button disabled (click)="back()">
+                <mat-icon>chevron_right</mat-icon>
             </button>
-            <button mat-button>
-                <mat-icon [matBadge]="basketQuantity()">shopping_cart</mat-icon>
-            </button>
-            <button mat-button (click)="removeItem($event)">
-                <mat-icon title="Удалить из корзины">remove</mat-icon>
-            </button>
-        </mat-card-actions>
-    </mat-card-footer>
+        </ng-template>
+    </div>
+    <mat-card-content>
+        <p>Отзывы: {{ product().feedbacksCount }}</p>
+        <div class="rating">
+            Рейтинг:
+            <mat-icon [class.star-active]="isActiveStar(1)">star</mat-icon>
+            <mat-icon [class.star-active]="isActiveStar(2)">star</mat-icon>
+            <mat-icon [class.star-active]="isActiveStar(3)">star</mat-icon>
+            <mat-icon [class.star-active]="isActiveStar(4)">star</mat-icon>
+            <mat-icon [class.star-active]="isActiveStar(5)">star</mat-icon>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="mat-card-actions-align-end">
+        <button
+            mat-button
+            [title]="isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'"
+            (click)="toFavorite($event)"
+        >
+            <mat-icon [class.color-success]="isFavorite">thumb_up</mat-icon>
+        </button>
+        <button mat-button class="ml-auto" (click)="addItem($event)">
+            <mat-icon title="Добавить в корзину">add</mat-icon>
+        </button>
+        <button mat-button>
+            <mat-icon [matBadge]="basketQuantity()">shopping_cart</mat-icon>
+        </button>
+        <button mat-button (click)="removeItem($event)">
+            <mat-icon title="Удалить из корзины">remove</mat-icon>
+        </button>
+    </mat-card-actions>
 </mat-card>
