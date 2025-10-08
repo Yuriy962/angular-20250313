@@ -4,12 +4,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import {Product} from '../../../shared/products/product.interface';
+import {CarouselDirective} from '../../../shared/carousel/carousel.directive';
 
 /** Компонент карточки товара */
 @Component({
     selector: 'app-product-card',
     standalone: true,
-    imports: [MatCardModule, MatButtonModule, MatIconModule, MatBadgeModule],
+    imports: [MatCardModule, MatButtonModule, MatIconModule, MatBadgeModule, CarouselDirective],
     templateUrl: './card.component.html',
     styleUrl: './card.component.css',
 })
@@ -21,10 +22,6 @@ export class CardComponent {
     readonly product = input.required<Product>();
 
     readonly buyProduct = output<Product['_id']>();
-
-    get productImage() {
-        return this.product().images.at(0);
-    }
 
     isActiveStar(index: number): boolean {
         return this.product().rating >= index;

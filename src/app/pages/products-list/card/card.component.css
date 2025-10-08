@@ -56,3 +56,7 @@
 .color-success {
     color: green;
 }
+
+[mat-icon-button] {
+    padding: 0;
+}
